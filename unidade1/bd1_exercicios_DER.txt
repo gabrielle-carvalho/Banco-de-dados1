@@ -1,0 +1,59 @@
+
+DISCIPLINA:  BANCO DE DADOS I
+
+
+PROFESSOR: DANIELA BARRETO ARAÚJO
+
+EXERCÍCIOS
+
+PARA TODAS AS QUESTÕES:
+Postar o arquivo PDF ou JPG. Forneça as restrições (min, max) desse diagrama e indique todas as chaves envolvidas na solução. Observe qualquer requisito não especificado e faça as suposições apropriadas para tornar a especificação completa. 
+
+1. Desenhe um DER para o banco de dados de controle de uma biblioteca.  Observe qualquer requisito não especificado e faça as suposições apropriadas para tornar a especificação completa. Considere os seguintes requisitos:
+A biblioteca tem no mínimo o controle dos livros e de seus exemplares, dos empréstimos, leitores, autores.
+a. Cada livro deve ter no mínimo nenhum, no máximo vários exemplares. 
+b. Cada exemplar é no mínimo um livro e no máximo um livro. 
+c. O livro pode ter vários autores. 
+d. Um autor pode ter vários livros.
+e. O livro deve ter uma e somente uma classificação.
+f. Os empréstimos são feitos por exemplar pelos leitores, ou seja, cada empréstimo é de no máximo um exemplar e também é no máximo de um leitor.
+g. O exemplar do livro pode ter sido tombado (não estar mais disponível pelos motivos de extravio ou danificado). O exemplar tem ano, editora, edição.
+h. O leitor pode estar com seu cadastro bloqueado (por estar devendo devoluções).
+
+2 Crie um DER para o banco de dados de vendas de produtos diversos pela Internet.
+    • Os produtos possuem nome, descrição, valor, quantidade.
+    • Os produtos possuem uma classificação.
+    • Cada produto tem um único fabricante, ou seja, se forem produtos semelhantes com fabricantes diferentes, são na verdade mais do que um produto.
+    • Um produto pode ter vários fornecedores. E um fornecedor fornecer vários produtos.
+    • Os fornecedores devem ter CNPJ, inscrição estadual, nome, endereço, bairro, cidade, estado, CEP, telefone, e-mail. 
+    • A nota fiscal de entrada tem o número da NF, a data, valor total.
+    • A empresa dá entrada nos produtos através da nota fiscal de entrada dos fornecedores com diversos produtos, suas quantidades e valores. 
+    • Uma NF de entrada pode ter um ou mais produtos, um produto pode estar em uma ou mais NF de entrada.
+    • Os clientes possuem CPF, nome, endereço, bairro, cidade, estado, CEP, telefone, celular, e-mail.
+    • Os clientes compram um ou diversos produtos na loja. Quando eles compram recebem a nota fiscal de saída, com o número da NF, a data, valor total.
+    • Uma NF de saída pode ter um ou mais produtos, um produto pode estar em uma ou mais NF de saída. Devem guardar a quantidade e valor de cada produto da nota fiscal de saída.
+    • Os clientes e os administradores possuem entrada no cadastro de login, código, login, senha e tipo (cliente/adm/vendedor). 
+
+3. Crie um DER para o banco de dados de um sistema financeiro de contas a pagar. 
+    • Os fornecedores aqui são considerados pessoa física, jurídica, quando jurídica deve preencher cnpj e ie, quando física o CPF. Os fornecedores devem ter um código, nome, endereço, bairro, cidade, estado, CEP, telefone, celular, e-mail, observação.
+    • As despesas devem ter código, descrição, mês de referência, observação, valor de referência, situação (em aberto, quitada, parcialmente quitada). Uma despesa está relacionada à no mínimo e no máximo um fornecedor. 
+    • As despesas devem pertencer a uma subclassificação de uma classificação. 
+    • Cada despesa pode ter nenhum ou mais títulos. 
+    • Os títulos devem ter cedente (fornecedor), data do vencimento, valor do documento, banco, agência/código cedente, data do documento, número do documento, nosso número, desconto, outras deduções, multa, outros acréscimos, valor cobrado (valor pago), instruções, código de barra.
+    • Os bancos devem estar cadastrados.
+    • As contas correntes que a empresa trabalha devem ter nome(apelido), agência, número da conta corrente, e pertencem a um banco.
+    • Um cheque, de uma conta corrente, emitido em uma data, nominal (sim/não), cruzado(sim/não) pode estar destinado a pagamentos de diversos títulos.
+    • Nesta modelagem um título só pode ter sido pago com um cheque. (para facilitar)
+    • OBS: Considere somente pagamentos em cheque para simplificar a atividade. 
+
+4. SIMULADO ANTES DA PROVA - Crie um DER para o BD do DETRAN para controlar multas aplicadas. Considere os requisitos mínimos:
+    • Os veículos são identificados pelo Renavam, mesmo tendo o chassi único e a placa única, além disso possui ano de fabricação e ano do modelo. 
+    • Cada veículo tem uma cor.
+    • Um veículo pode ter vários combustíveis.  Cada combustível pode não pertencer a nenhum ou a vários veículos. 
+    • Cada veículo possui um único proprietário que é identificado pelo seu CPF.
+    • Deve-se saber nome, endereço, cidade, estado, CEP, telefone (vários), sexo e data de nascimento do proprietário. 
+    • Todo veículo possui um único modelo. Todo modelo tem uma marca. 
+    • Todo veículo possui uma categoria (que pode ser por exemplo: motocicleta, automóvel, caminhão, ônibus, ...) 
+    • Existem diversos tipos de infração: avançar sinal, exceder velocidade máxima permitida, dirigir sem carteira, ... A cada tipo de infração tem um valor que deverá ser cobrado e uma descrição (ou nome). 
+    • A infração tem no mínimo os seguintes campos veículo infrator, data, hora, local, tipo de infração, velocidade aferida (quando for o caso), agente de trânsito, observações. 
+    • Um agente de trânsito tem nome e data de contratação.
