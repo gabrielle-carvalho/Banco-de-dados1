@@ -558,3 +558,34 @@ INSERT INTO `veiculos_has_combustiveis` (`renavam`,`idcombustivel`) VALUES
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+
+update combustiveis
+set nome = "álcool"
+where nome = "alcool";
+
+update combustiveis
+set nome = "alcool"
+where nome = "álcool";
+
+select nome from modelos
+where idmarca = 3;
+
+select renavam, datahora, 
+(select descricao from tiposinfracoes 
+	where tiposinfracoes.idtipoinfracao = infracoes.idtipoinfracao)
+    as tipo_infracao 
+from infracoes
+where datahora >= '2009-04-01';
+
+select renavam, datahora from infracoes 
+where datahora >= '2009-04-01 00:00:00' and idtipoinfracao=5;
+
+select renavam, datahora from infracoes 
+where datahora between '2009-03-01 00:00:00' and '2009-03-31 00:00:00' and idtipoinfracao=5;
+
+select placa, idmodelo, idcor from veiculos
+where placa like 'JRO%';
+
+select placa, idmodelo, idcor from veiculos
+where placa like '__Z%9';
