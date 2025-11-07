@@ -1,0 +1,48 @@
+1) Crie as tabelas usando o script enviado
+
+agentes(idagente,nome,datacontratacao)
+categorias(idcategoria,nome)
+cidades(idcidade,nome,idestado)
+combustiveis(idcombustivel,nome)
+cores(idcor,nome)
+estados(idestado,nome,sigla)
+infracoes(idinfracao,renavam,data,hora,local,idtipoinfracao,velocidade,idagente,obs)
+marcas(idmarca,nome)
+modelos(idmodelo,nome,idmarca)
+proprietarios(cpf,nome,endereco,idcidade,cep,sexo,data_nasc)
+telefones(idtelefone,numero,cpf)
+tipoinfracoes(idtipoinfracao,nome,valor)
+veiculos(renavam,chassi,placa,idcor,idmodelo,ano_fab,ano_modelo,idcategoria,cpf)
+veiculos_has_combustiveis(renavam, idcombustivel)
+
+
+6) Insira registros em algumas tabelas. (Não precisa fazer este)
+ 
+7) Altere em combustível o registro onde nome ="alcool" para nome="álcool". (ou vice-versa)
+
+8) Liste o nome dos modelos da marca 3.
+
+9) Liste o renavam, data e tipo_infracao das infrações que ocorreram a partir do dia 01/04/2009.
+
+10) Liste o renavam e data das infrações que ocorreram a partir do dia 01/04/2009 e tipo de infração igual a 5.
+
+11) Liste o renavam e data das infrações que ocorreram entre os dias 01/03/2009 e 31/03/2009 e tipo de infração igual a 5
+
+12) Exiba placa, idmodelo e idcor dos veículos que a placa começa com JRO.
+
+13) Exiba placa, idmodelo e idcor dos veículos que a placa tem o terceiro dígito Z e termina com 9.
+
+14) Selecione idmarca e nome do modelo, dos modelos que têm marcas que sejam igual a 01, 05, 12, 25, 33 ou 42, ordenado por idmarca e nome do modelo.
+
+15) Mostre quantas multas são emitidas por dia no ano de 2009. 
+
+16) Mostre qual a velocidade média e qual a máxima das infrações.
+
+17) Liste a quantidade de veículos de cada modelo. 
+
+18) Mostre a quantidade de veículos por cor para a categoria 2.
+
+19) Mostre a quantidade de veículos por combustível para combustíveis cuja quantidade seja maior do que 10.
+
+20) Mostre a quantidade de infrações de cada tipo de infração ocorrida em 2009 somente para tipos de infrações que a quantidade seja maior do que 5.
+
