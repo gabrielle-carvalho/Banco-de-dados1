@@ -589,3 +589,36 @@ where placa like 'JRO%';
 
 select placa, idmodelo, idcor from veiculos
 where placa like '__Z%9';
+
+
+# 14) Selecione idmarca e nome do modelo, dos modelos que têm marcas que sejam igual a 01, 05, 12, 25, 33 ou 42, ordenado por idmarca e nome do modelo.
+select idmarca, nome
+from modelos
+where idmarca=01 or idmarca=05 or idmarca=12 or idmarca=25 or idmarca=33 or idmarca=42
+order by idmarca asc, nome asc;
+
+# 15) Mostre quantas multas são emitidas por dia no ano de 2009. 
+select datahora, count(*) from infracoes
+where datahora between '2009-01-01' and  '2009-12-31'
+group by datahora;
+
+
+# 16) Mostre qual a velocidade média e qual a máxima das infrações.
+select velocidade, avg(velocidade) as media_vel, max(velocidade) as max_vel from infracoes
+group by velocidade; # veio vazio, ver pq ta erradoo
+
+# 17) Liste a quantidade de veículos de cada modelo. 
+select nome, count(*) as soma from modelos
+group by nome;
+
+# 18) Mostre a quantidade de veículos por cor para a categoria 2.
+select idcor, count(*) as quantidade_veiculos from veiculos
+where idcategoria=2
+group by idcor;
+
+# 19) Mostre a quantidade de veículos por combustível para combustíveis cuja quantidade seja maior do que 10.
+
+# 20) Mostre a quantidade de infrações de cada tipo de infração ocorrida em 2009 somente para tipos de infrações que a quantidade seja maior do que 5.
+select idtipoinfracao, count(*) as quantidade from infracoes
+where datahora between '2009-01-01' and  '2009-12-31'
+group by idtipoinfracao; # where quantidade > 5 precisa ser implementada
