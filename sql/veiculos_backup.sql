@@ -627,12 +627,54 @@ group by idtipoinfracao having quantidade > 5;
 # ATENÇÃO, POIS PODE SER PRECISO USAR MAIS DO QUE UMA TABELA E PARA ISSO SÓ SERÁ ACEITO SE FOR USANDO JOIN.
 
 # 1) Liste o renavam, a placa do veículo, data e nome do tipo de infracao das infrações que ocorreram a partir do dia 01/04/2009.
+select i.renavam, v.placa, i.datahora, t.descricao as tipo_infracao
+from infracoes i join veiculos v on i.renavam = v.renavam
+join tiposinfracoes t on i.idtipoinfracao = t.idtipoinfracao
+WHERE i.datahora >= '2009-04-01';
 
 # 2) Liste o renavam, a placa do veículo e data das infrações que ocorreram a partir do dia 01/04/2009 e tipo de infração igual a 5.
+select i.renavam, v.placa, i.datahora
+from infracoes i 
+join veiculos v on i.renavam = v.renavam
+where i.datahora >= '2009-03-01' and i.idtipoinfracao = 5;
+
 # 3) Liste o renavam, o nome do proprietário e data das infrações que ocorreram entre os dias 01/03/2009 e 31/03/2009 e tipo de infração igual a 5
+select i.renavam, p.nome as proprietario, i.datahora
+from infracoes i join veiculos v on i.renavam = v.renavam
+join proprietarios p on v.cpf = p.cpf
+where i.datahora between '2009-03-01' and '2009-03-31' and i.idtipoinfracao=5;
+
 # 4) Exiba placa, nome do modelo e a nome da cor dos veículos que a placa começa com JRO.
+select v.placa, m.nome as modelo, c.nome as cor
+from veiculos v join modelos m on v.idmodelo = m.idmodelo
+join cores c on v.idcor = c.idcor
+where v.placa like 'JRO%';
+
 # 5) Exiba placa, nome do modelo e a nome da cor dos veículos que a placa tem o terceiro dígito Z e termina com 9.
+select v.placa, m.nome as modelo, c.nome as cor
+from veiculos v join modelos m on v.idmodelo = m.idmodelo
+join cores c on v.idcor = c.idcor
+where v.placa like '__Z%9';
+
 # 6) Selecione nome da marca e nome do modelo, dos modelos que o código da marca seja igual a 01, 05, 12, 25, 33 ou 42, ordenado por idmarca e nome do modelo.
+select ma.idmarca, ma.nome as marca, m.nome as modelo
+from modelos m join marcas ma on m.idmarca = ma.idmarca
+where m.idmarca in (1, 5, 12, 25, 33, 42)
+order by m.idmarca asc, m.nome asc;
+
 # 7) Mostre a quantidade de veículos por tipo de combustível para a categoria igual a “automóvel”.
+select c.nome as combustivel, count(distinct v.renavam) as qtd_veiculos
+from combustiveis c join veiculos_has_combustiveis vhc on c.idcombustivel = vhc.idcombustivel
+join veiculos v on vhc.renavam = v.renavam
+join categorias cat on v.idcategoria = cat.idcategoria
+where cat.nome = 'automóvel' group by c.idcombustivel, c.nome;
+
 # 8) Mostre a quantidade de veículos por tipo de combustível (exiba o nome do tipo de combustível) para combustíveis cuja quantidade seja maior do que 10.
+select c.nome as combustivel, count(vhc.renavam) as qtd_veiculos
+from combustiveis c join veiculos_has_combustiveis vhc on c.idcombustivel = vhc. idcombustivel
+group by c.idcombustivel, c.nome having qtd_veiculos > 10;
+
 # 9) Mostre a quantidade de infrações de cada tipo de infração (exiba o nome do tipo de infração) ocorrida em 2009 somente para tipos de infrações que a quantidade seja maior do que 5.
+select t.descricao as tipo_infracao, count(*) as qtd
+from infracoes i join  tiposinfracoes t on i.idtipoinfracao = t.idtipoinfracao
+where year(i.datahora) = 2009 group by t.idtipoinfracao, t.descricao having qtd>5;
